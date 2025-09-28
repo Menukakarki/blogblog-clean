@@ -9,17 +9,13 @@ from flask_mail import Mail, Message
 from dotenv import load_dotenv
 
 
-
-load_dotenv()
+load_dotenv()  # Load environment variables
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
 # Load config
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
-try:
-    from dotenv import load_dotenv
-    load_dotenv()
-except ModuleNotFoundError:
-    print("python-dotenv not installed, skipping .env load")
+
 
 local_server = params.get("local_server") == "True"
 
