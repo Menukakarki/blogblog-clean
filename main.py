@@ -25,7 +25,7 @@ app.config['UPLOAD_FOLDER'] = params['upload_location']
 
 # Database config
 if local_server:
-    app.config["SQLALCHEMY_DATABASE_URI"] = params['local_uri']
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///nexapost.db"
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = params['prod_uri']
 
