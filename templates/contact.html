@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - Clean Blog{% endblock %}
+
+{% block content %}
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/cons.png') }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>Contact Me</h1>
+                    <span class="subheading">Have questions? I have answers.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    /* 1. Target the button by its ID to ensure high specificity */
+    #submitButton {
+        /* Keep the base styles for the normal state */
+        background-color: #010b1a !important; 
+        border-color: #010b1a !important; 
+        color: #ffffff !important;
+    }
+
+    /* 2. Define the Hover State */
+    #submitButton:hover, 
+    #submitButton:focus {
+        /* Use a slightly lighter/darker color for the hover effect */
+        background-color: #001f3f !important; /* A slightly different shade of navy */
+        border-color: #001f3f !important;
+    }
+</style>
+
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+                <form id="contactForm" method="POST" action="/contact">
+                    <!-- Name -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..." required />
+                        <label for="name">Name</label>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
+                        <label for="email">Email address</label>
+                    </div>
+                    
+                    <!-- Phone -->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" required />
+                        <label for="phone">Phone Number</label>
+                    </div>
+                    
+                    <!-- Message -->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" name="message" placeholder="Enter your message here..." style="height: 10rem" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

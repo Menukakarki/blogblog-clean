@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Sample Post - Clean Blog{% endblock %}
+
+{% block content %}
+
+
+
+{% set fname = 'img/' + post.img_url %}
+<header class="masthead" style="background-image: url('{{ url_for("static", filename=post.img_url) }}')">
+
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ post.title }}</h1>
+                    <h2 class="subheading">{{ post.tagline }}</h2>
+                     <span class="meta">Posted on {{ post.date.strftime('%B %d, %Y') }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>{{ post.content }}</p>
+                <!-- <h2 class="section-heading">The Final Frontier</h2>
+                <p>There can be no thought of finishing for ‘aiming for the stars’...</p>
+                <blockquote class="blockquote">The dreams of yesterday are the hopes of today...</blockquote>
+                <a href="#!"><img class="img-fluid" src="{{ url_for('static', filename='img/mm.jpeg') }}" alt="..." /></a>
+                <span class="caption text-muted">To go places and do things that have never been done before...</span> -->
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}

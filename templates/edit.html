@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Post - NexaPost{% endblock %}
+
+{% block content %}
+<style>
+  .rounded-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .rounded-btn:hover {
+    background-color: green;
+    color: white;
+  }
+
+  .delete-btn:hover {
+    background-color: #ff4d4d;
+    color: white;
+  }
+</style>
+     <h1 style="padding: 10px">Basic actions</h1>
+     <hr>
+    <a href="/dashboard" class="rounded-btn" 
+   style="padding: 8px 16px; 
+          margin: 20px; 
+          display:inline-block; 
+          text-decoration:none; 
+          color:black;">
+  Dashboard
+</a>
+
+
+    <a href="/logout" class="rounded-btn" 
+   style="padding: 8px 16px; 
+          margin: 1px; 
+          display:inline-block; 
+          text-decoration:none; 
+          color:black;">
+  Logout
+</a>
+
+
+
+
+<div class="container mt-4">
+  <h1>{% if post %}Edit{% else %}Add{% endif %} Post</h1>
+
+  <form method="POST" action="/edit/{{ sno }}">
+    <!-- Title -->
+    <div class="form-floating mb-3">
+      <input class="form-control" id="title" name="title" type="text"
+             placeholder="Enter title..." value="{{ post.title if post else '' }}" required />
+      <label for="title">Title</label>
+    </div>
+
+    <!-- Tagline -->
+    <div class="form-floating mb-3">
+      <input class="form-control" id="tagline" name="tagline" type="text"
+             placeholder="Enter tagline..." value="{{ post.tagline if post else '' }}" required />
+      <label for="tagline">Tagline</label>
+    </div>
+
+    <!-- Slug -->
+    <div class="form-floating mb-3">
+      <input class="form-control" id="slug" name="slug" type="text"
+             placeholder="Enter slug..." value="{{ post.slug if post else '' }}" required />
+      <label for="slug">Slug</label>
+    </div>
+
+    <!-- Content -->
+    <div class="form-floating mb-3">
+      <textarea class="form-control" id="content" name="content"
+                placeholder="Write content..." style="height: 8rem" required>{{ post.content if post else '' }}       </textarea>
+      <label for="content">Content</label>
+    </div>
+
+    <!-- Image URL -->
+    <div class="form-floating mb-3">
+      <input class="form-control" id="img_url" name="img_url" type="text"
+             placeholder="Enter image path (*any alphabet in small captions double*.jpeg[e.g: aa.jpeg/bb.jpeg/cc.jpeg])"
+             value="{{ post.img_url if post else '' }}" />
+      <label for="img_url">Image URL</label>
+    </div>
+
+    <!-- Submit -->
+    <button class="rounded-btn" type="submit">Save</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Home - NexaPost{% endblock %}
+
+{% block content %}
+<style>
+  .rounded-btn {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 6px 14px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .rounded-btn:hover {
+    background-color: green;
+    color: black;
+  }
+
+  .delete-btn:hover {
+    background-color: #ff4d4d; /* red hover for delete */
+    color: white;
+  }
+</style>
+
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/uuu.png') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Admin Panel</h1>
+                    <span class="subheading">manage n chage here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h1>Basic actions</h1>
+            
+                 <button class="rounded-btn"><a href="/edit/0">Create post</a></button>
+                 <button class="rounded-btn"><a href="/logout">Logout</a></button>
+                 
+             <hr>
+             <h1>file uploder</h1>
+            
+                 <form action="/uploader" method="post" enctype="multipart/form-data">
+                     <input type="file" name="file1">
+                     <button class="rounded-btn">submit</button>
+                 </form>
+            <hr>
+  <h1>Edit posts</h1>
+        <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Sno</th>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <td>{{post.sno}}</td>
+      <td>{{post.title}}</td>
+      <td>{{post.date}}</td>
+     <td><a href="/edit/{{ post.sno }}" class="rounded-btn">Edit</a></td>
+<td><a href="/delete/{{ post.sno }}" class="rounded-btn delete-btn">Delete</a>
+
+</td>
+    </tr>
+   
+    {% endfor %}
+  </tbody>
+</table>
+
+            
+
+        </div>
+    </div>
+</div>
+{% endblock %}

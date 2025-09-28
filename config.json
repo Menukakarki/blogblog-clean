@@ -1,0 +1,19 @@
+{
+  "params": {
+    "local_server": "True",
+    "local_uri": "mysql+pymysql://root:@localhost/nexapost",
+    "prod_uri": "mysql+pymysql://root:@localhost/nexapost",
+    "fb_url": "https://facebook.com/nexapost",
+    "tw_url": "https://x.com/nexapost",
+    "gh_url": "https://github.com/nexapost",
+    "blog_name": "NexaPost",
+    "tag_line": "For minds that love to wander.",
+    "about_text": "HI!..welcome lol",
+    "no_of_post": 2,
+    "admin_user": "moon",
+    "admin_password": "2momo",
+    "upload_location": "C:\\pro3\\uploaded"
+
+
+  }
+}

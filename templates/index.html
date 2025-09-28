@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Home - NexaPost{% endblock %}
+
+{% block content %}
+
+<!-- {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, msg in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ msg }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %} -->
+
+
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='img/uuu.png') }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>{{params['blog_name']}}</h1>
+                    <span class="subheading">{{params['tag_line']}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    /* Styles for the Pager Buttons (Previous/Next) */
+    .clearfix .btn-primary {
+        /* Base styles for the dark blue color */
+        background-color: #010b1a !important; 
+        border-color: #010b1a !important; 
+        color: #ffffff !important;
+    }
+
+    .clearfix .btn-primary:hover, 
+    .clearfix .btn-primary:focus {
+        /* Hover/Focus state for visual feedback */
+        background-color: #001f3f !important; /* Slightly different shade of navy */
+        border-color: #001f3f !important;
+    }
+</style>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+            
+            {% for post in posts %}
+
+    <div class="post-preview">
+        <a href="{{ url_for('post_route', post_slug=post.slug) }}">
+            <h2 class="post-title">{{ post.title }}</h2>
+            <h3 class="post-subtitle">{{ post.tagline[:25] }}...</h3>
+        </a>
+        <p class="post-meta">Posted on {{ post.date.strftime('%B %d, %Y') }}</p>
+    </div>
+    {{ post.content[:150] }}...
+     <hr>
+{% endfor %}
+            
+
+            <!-- Post Preview 2 -->
+            <!-- <div class="post-preview">
+                <a href="{{ url_for('post_route', post_slug='sample-post') }}">
+s
+                    <h2 class="post-title">Getting Started with Flask</h2>
+                    <h3 class="post-subtitle">A beginner’s guide to web development.</h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#">Admin</a> on August 30, 2025</p>
+            </div>
+            <hr> -->
+
+            <!-- Post Preview 3 -->
+            <!-- <div class="post-preview">
+                <a href="{{ url_for('post_route', post_slug='sample-post') }}">
+
+                    <h2 class="post-title">Why Blogging Still Matters</h2>
+                    <h3 class="post-subtitle">Sharing knowledge, building communities.</h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#">Admin</a> on August 25, 2025</p>
+            </div>
+            <hr> -->
+            
+             <!-- Post Preview 4 -->
+            <!-- <div class="post-preview">
+                <a href="{{ url_for('post_route', post_slug='sample-post') }}">
+
+                    <h2 class="post-title">Why Blogging Still Matters</h2>
+                    <h3 class="post-subtitle">Sharing knowledge, building communities.</h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#">Admin</a> on August 25, 2025</p>
+            </div>
+            <hr> -->
+
+            <!-- Pager -->
+            <div class="clearfix">
+            	<a class="btn btn-primary float-left" href="{{prev}}">&larr; Previous Posts</a>
+                <a class="btn btn-primary float-right" href="{{next}}">Next Posts &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
